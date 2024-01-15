@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Country::create(['name' => 'Czechia', 'codename' => 'cs_CZ']);
+        
         City::create(['country_id' => 1, 'name' => 'Plzeň']);
         City::create(['country_id' => 1, 'name' => 'Praha']);
         Tag::create(['name' => 'Studentská akce', 'slug' => 'studentska']);
