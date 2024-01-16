@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Country::create(['name' => 'Czechia', 'codename' => 'cs_CZ']);
+        Country::create(['name' => 'Czechia (Česko)', 'codename' => 'cs_CZ']);
         
         City::create(['country_id' => 1, 'name' => 'Plzeň']);
         City::create(['country_id' => 1, 'name' => 'Praha']);
