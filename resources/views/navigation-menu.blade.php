@@ -1,5 +1,28 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
+    <script>
+        function darkMode() {
+            return {
+                darkMode: false,
+                init() {
+                    this.darkMode = localStorage.getItem('darkMode') === 'true';
+                    this.updateBodyClass();
+                },
+                toggle() {
+                    this.darkMode = !this.darkMode;
+                    localStorage.setItem('darkMode', this.darkMode);
+                    this.updateBodyClass();
+                },
+                updateBodyClass() {
+                    if (this.darkMode) {
+                        document.body.classList.add('dark');
+                    } else {
+                        document.body.classList.remove('dark');
+                    }
+                }
+            }
+        }
+    </script>    
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
@@ -29,7 +52,7 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <button x-cloak x-on:click="darkMode = !darkMode;">
+                <button x-data="darkMode()" x-init="init()" x-on:click="toggle()" x-cloak>
                     <x-heroicon-s-moon x-show="!darkMode" class="p-2 ml-3 w-8 h-8 text-gray-700 bg-gray-100 rounded-md transition cursor-pointer hover:bg-gray-200" />
                     <x-heroicon-s-sun x-show="darkMode" class="p-2 ml-3 w-8 h-8 text-gray-100 bg-gray-700 rounded-md transition cursor-pointer dark:hover:bg-gray-600" />
                 </button>

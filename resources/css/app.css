@@ -5,3 +5,10 @@
 [x-cloak] {
     display: none;
 }
+
+.dark {
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+    background-color: rgba(17, 24, 39, var(--tw-bg-opacity)); /* This is the dark mode background color. */
+    color: rgba(229, 231, 235, var(--tw-text-opacity)); /* This is the dark mode text color. */
+}
