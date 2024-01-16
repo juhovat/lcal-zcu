@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\EventItem;
 
-class SavedEventController extends Controller
+class AttendingEventItemController extends Controller
 {
     /**
      * Handle the incoming request.
      */
     public function __invoke()
     {
-        $events = EventItem::with('savedEvents')->whereHas('savedEvents', function ($q) {
+        $events = EventItem::with('attendings')->whereHas('attendings', function ($q) {
             $q->where('user_id', auth()->id());
         })->get();
 
-        return view('events.savedEvents', compact('events'));
+        return view('events.attendingEvents', compact('events'));
     }
 }

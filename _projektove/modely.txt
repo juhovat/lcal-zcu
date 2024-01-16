@@ -1,8 +1,0 @@
-City
-EventItem
-Attending
-Comment
-Like
-SavedEvent
-Tag
-Gallery
