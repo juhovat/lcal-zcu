@@ -47,7 +47,11 @@ Route::middleware([
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    
+    //Route::resource('image', EventItemController::class)->except(['show', 'edit', 'update', 'delete']);
+    //Route::get('events/{event}', 'EventItemController@show')->name('events.show');
+    Route::get('events/{event}/img', [EventItemController::class, 'show'])->name('events.show');
+
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');

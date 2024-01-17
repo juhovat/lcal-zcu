@@ -24,7 +24,7 @@ class CreateEventItemRequest extends FormRequest
         return [
             'title' => 'required|max:155|min:2',
             'address' => 'required|max:155|min:2',
-            'image' => 'image|required',
+            'image' => 'image|nullable',
             'start_date' => 'required',
             'end_date' => 'required',
             'start_time' => 'required',

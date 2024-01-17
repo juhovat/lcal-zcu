@@ -45,22 +45,22 @@ class EventItemController extends Controller
      */
     public function store(CreateEventItemRequest $request): RedirectResponse
     {
+        $data = $request->validated();
         if ($request->hasFile('image')) {
-
-            $data = $request->validated();
-            $data['image'] = Storage::putFile('events', $request->file('image'));
-            $data['user_id'] = auth()->id();
-            $data['slug'] = Str::slug($request->title);
-
-            $event = EventItem::create($data);
-            $event->tags()->attach($request->tags);
-            return to_route('events.index');
-        } else {
-            return back();
+        $data['image'] = Storage::putFile('events', $request->file('image'));
         }
+        $data['user_id'] = auth()->id();
+        $data['slug'] = Str::slug($request->title);
+
+        $event = EventItem::create($data);
+        $event->tags()->attach($request->tags);
+        return to_route('events.index');
     }
 
-
+    public function show(EventItem $event): View
+    {
+        return view('events.show', compact('event'));
+    }
     /**
      * Show the form for editing the specified resource.
      */

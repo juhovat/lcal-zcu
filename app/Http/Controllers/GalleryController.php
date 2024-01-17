@@ -50,18 +50,25 @@ class GalleryController extends Controller
         // return back();
         $this->validate($request, [
             'caption' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     
         //$path = $request->file('image')->store('galleries', 'public');
+        if($request->file('image')) {
         $path = $request->file('image')->store('public/images');
         $gallery = new Gallery([
             'caption' => $request->input('caption'),
+            'desc' => $request->input('desc'),
             'image' => $path,
         ]);
-    
+        }
+        else {
+            $gallery = new Gallery([
+                'caption' => $request->input('caption'),
+                'desc' => $request->input('desc')
+            ]);
+        }
         $request->user()->galleries()->save($gallery);
-    
         return redirect()->route('galleries.index');
     }
 
