@@ -13,7 +13,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SavedEventController;
 use App\Http\Controllers\SavedEventItemSystemController;
 use App\Http\Controllers\StoreCommentController;
+use App\Http\Controllers\UvodController;
 use App\Models\Country;
+use App\Models\EventItem;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,11 +55,13 @@ Route::middleware([
         //     return view('events.index');
         // })->name('events');
     Route::resource('/events', EventItemController::class);
-    Route::resource('/pages', GalleryController::class);
+    Route::resource('/galleries', GalleryController::class);
+    Route::get('/images', [GalleryController::class, 'index']);
+    Route::post('/images/upload', [GalleryController::class, 'store']);
 
     Route::get('/liked-events', LikedEventItemController::class)->name('likedEvents');
-    Route::get('/saved-events', SavedEventController::class)->name('savedEvents');
     Route::get('/attending-events', AttendingEventItemController::class)->name('attendingEvents');
+    Route::get('/saved-events', SavedEventController::class)->name('savedEvents');
     Route::post(
         '/events-like/{id}',
         LikeSystemController::class
@@ -73,4 +77,8 @@ Route::middleware([
     Route::get('/countries/{country}', function (Country $country) {
         return response()->json($country->cities);
     });
+    Route::get(
+        '/uvod',
+        [UvodController::class, 'vypis']
+    )->name('prehled');
 });

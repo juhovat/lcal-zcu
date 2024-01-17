@@ -28,8 +28,8 @@ class EventItem extends Model
     ];
 
     protected $casts = [
-        'start_date' => 'date:m/d/Y',
-        'end_date' => 'date:m/d/Y',
+        'start_date' => 'date:dd/mm/Y',
+        'end_date' => 'date:dd/mm/Y',
     ];
 
     public function user(): BelongsTo
