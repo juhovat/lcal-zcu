@@ -17,6 +17,7 @@ use App\Http\Controllers\UvodController;
 use App\Models\Country;
 use App\Models\EventItem;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,8 +50,11 @@ Route::middleware([
     
     //Route::resource('image', EventItemController::class)->except(['show', 'edit', 'update', 'delete']);
     //Route::get('events/{event}', 'EventItemController@show')->name('events.show');
-    Route::get('events/{event}/img', [EventItemController::class, 'show'])->name('events.show');
-
+    // Route::get('events/{event}/img', [EventItemController::class, 'show'])->name('events.show');
+    Route::get('/events/{event}/img', function (EventItem $event) {
+        return Storage::response("public/{$event->image}");
+    })->name('events.displayImage');
+    
 
     Route::get('/dashboard', function () {
         return view('dashboard');

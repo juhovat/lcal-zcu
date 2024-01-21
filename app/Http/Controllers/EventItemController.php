@@ -45,17 +45,21 @@ class EventItemController extends Controller
      */
     public function store(CreateEventItemRequest $request): RedirectResponse
     {
-        $data = $request->validated();
-        if ($request->hasFile('image')) {
-        $data['image'] = Storage::putFile('events', $request->file('image'));
-        }
-        $data['user_id'] = auth()->id();
-        $data['slug'] = Str::slug($request->title);
-
-        $event = EventItem::create($data);
-        $event->tags()->attach($request->tags);
-        return to_route('events.index');
+    $data = $request->validated();
+    if ($request->hasFile('image')) {
+        $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+        //zajistuje pristup (presun z public/public) pro Storage:url()
+        $path = $request->file('image')->storeAs('public/events', $imageName);
+        $data['image'] = str_replace('public/', '', $path);
     }
+    $data['user_id'] = auth()->id();
+    $data['slug'] = Str::slug($request->title);
+
+    $event = EventItem::create($data);
+    $event->tags()->attach($request->tags);
+    return to_route('events.index');
+    }
+
 
     public function show(EventItem $event): View
     {
@@ -75,18 +79,22 @@ class EventItemController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdateEventItemRequest $request, EventItem $event): RedirectResponse
-    {
-        $data = $request->validated();
-        if ($request->hasFile('image')) {
-            Storage::delete($event->image);
-            $data['image'] = Storage::putFile('events', $request->file('image'));
-        }
-
-        $data['slug'] = Str::slug($request->title);
-        $event->update($data);
-        $event->tags()->sync($request->tags);
-        return to_route('events.index');
+{
+    $data = $request->validated();
+    if ($request->hasFile('image')) {
+        Storage::delete('public/' . $event->image);
+        $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+        //zajistuje pristup (presun z public/public) pro Storage:url()
+        $path = $request->file('image')->storeAs('public/events', $imageName);
+        $data['image'] = str_replace('public/', '', $path);
     }
+
+    $data['slug'] = Str::slug($request->title);
+    $event->update($data);
+    $event->tags()->sync($request->tags);
+    return to_route('events.index');
+}
+
 
     /**
      * Remove the specified resource from storage.

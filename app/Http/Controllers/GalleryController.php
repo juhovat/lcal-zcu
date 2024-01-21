@@ -53,21 +53,32 @@ class GalleryController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     
-        //$path = $request->file('image')->store('galleries', 'public');
-        if($request->file('image')) {
-        $path = $request->file('image')->store('public/images');
+        
+        // if($request->file('image')) {
+        // $path = $request->file('image')->store('public/images');
+        
+        // if ($request->hasFile(key: 'image')) {
+        
+        //     $img = $request->file(key: 'image')->store(options: 'public');
+        // }
+        // $gallery = new Gallery([
+        //     'caption' => $request->input('caption'),
+        //     'desc' => $request->input('desc'),
+        //     'image' => $img ??= "jojjo"
+        // ]);
+        if ($request->hasFile('image')) {
+            $img = $request->file('image')->store('galleries', 'public');
+        } 
+        else {
+            $img = 'assets/announcement-default.png'; // replace with your default image path
+        }
+        
         $gallery = new Gallery([
             'caption' => $request->input('caption'),
             'desc' => $request->input('desc'),
-            'image' => $path,
+            'image' => $img
         ]);
-        }
-        else {
-            $gallery = new Gallery([
-                'caption' => $request->input('caption'),
-                'desc' => $request->input('desc')
-            ]);
-        }
+        
         $request->user()->galleries()->save($gallery);
         return redirect()->route('galleries.index');
     }
@@ -86,23 +97,34 @@ class GalleryController extends Controller
      */
     public function update(Request $request, Gallery $gallery)
     {
-        $path = $gallery->image;
+        // $path = $gallery->image;
         $this->validate($request, [
             'caption' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
-            if($gallery->image) {
-                Storage::delete($gallery->image);
+            // if($gallery->image) {
+            //     Storage::delete($gallery->image);
+            // }
+            // $img = $request->file('image')->store('galleries', 'public');
+            
+            if ($request->hasFile('image')) {
+                $img = $request->file('image')->store('galleries','public');
+            } else {
+                $img = $gallery->image; 
             }
-            $path = $request->file('image')->store('galleries', 'public');
-        }
-        $gallery->update([
-            'caption' => $request->input('caption'),
-            'image' => $path,
-        ]);
-        return to_route('galleries.index');
+
+            $gallery->update([
+                'caption' => $request->input('caption'),
+                'desc' => $request->input('desc'),
+                'image' => $img
+            ]);
+
+            return redirect()->route('galleries.index');
+}
+
+        // return to_route('galleries.index');
     }
 
     /**
