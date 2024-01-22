@@ -7,9 +7,8 @@
         {{-- temporary fixed user id --}}
         <button wire:click="showMyEvents(1)" class="bg-black rounded-md text-white py-2 px-4 mx-2   hover:bg-white hover:text-black">Vaše akce</button>
         <button class="bg-red-500 text-white rounded-full p-2 mx-2">
-            <!-- composer require blade-ui-kit/blade-heroicons -->
-            {{-- <x-heroicon-s-heart /> --}}
-            <i class="fas fa-heart"></i>
+            <a href="/liked-events"><i class="fas fa-heart"></i></a>
+            
         </button>
     </div>
     {{-- @for ($i = 0; $i < 5; $i++) --}}

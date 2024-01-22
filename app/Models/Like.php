@@ -14,6 +14,6 @@ class Like extends Model
 
     public function render()
     {
-        return view('liked-events');
+        // return view('liked-events');
     }
 }
