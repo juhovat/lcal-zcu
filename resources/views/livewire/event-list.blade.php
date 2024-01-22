@@ -44,7 +44,8 @@
                 <td class="p-2 border-b border-gray-200 text-gray-400">
                     
 
-                    <form method="POST" action="{{ url('/events-like/' . $event->id) }}">
+                    {{-- <form method="POST" action="{{ url('/events-like/' . $event->id) }}"> --}}
+                    <form method="POST" action="{{ route('events.like',$event->id) }}">
                         @csrf
                         <button type="submit">
                             {{-- <x-heroicon-o-heart /> --}}
@@ -53,7 +54,7 @@
                     </form>
                 </td>
                 <td class="p-2 border-b border-gray-200 bg-blue-800 text-white">
-                    <button>
+                    <button class="btn_get_event_sum" wire:click="{{ route('events.showEventDetails') }}">
                         {{-- composer require codeat3/blade-eos-icons --}}
                         {{-- <x-eos-content-copy /> --}}
                         <i class="fas fa-copy"></i>

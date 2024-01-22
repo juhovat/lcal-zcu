@@ -26,6 +26,10 @@
                         {{-- make button actually switch to hero-render --}}
                         <button @click="$dispatch('toggle-hero')" class="text-sm bg-white rounded-full text-black p-2 px-3 mt-2">DETAILY</button>
                     </div>
+                    <div>
+                        <input type="text" id="input_notefield">
+                    </div>
+
                 </div>
             </div>
         </div>

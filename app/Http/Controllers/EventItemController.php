@@ -106,4 +106,21 @@ class EventItemController extends Controller
         $event->delete();
         return to_route('events.index');
     }
+
+    public function showEventDetails(EventItem $event)
+{
+    $tags = $event->tags->pluck('name')->implode(', ');
+
+    $details = "Title: {$event->title}, "
+             . "Address: {$event->address}, "
+             . "Start Date: {$event->start_date}, "
+             . "End Date: {$event->end_date}, "
+             . "Start Time: {$event->start_time}, "
+             . "Tags: {$tags}";
+
+    // $field = document.getElementById("input_notefield")
+    // $field.value = $details
+
+    return view('events.copyDetail', ['details' => $details]);
+}
 }

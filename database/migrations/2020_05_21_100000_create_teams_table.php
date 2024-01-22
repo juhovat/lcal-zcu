@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->index();
             $table->string('name');
             $table->boolean('personal_team');
+            $table->string('color')->default("##1a4c84"); //ZČU logo
             $table->timestamps();
         });
     }

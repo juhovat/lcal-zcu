@@ -36,8 +36,8 @@ Route::get('/', function () {
 });
 // Route::get('/countries/{id}', [CountryController::class, 'getCities']);
 
-Route::get('/e', EventIndexController::class)->name('eventIndex');
-Route::get('/e/{id}', EventItemShowController::class)->name('eventShow');
+// Route::get('/e', EventIndexController::class)->name('eventIndex');
+// Route::get('/e/{id}', EventItemShowController::class)->name('eventShow');
 Route::get('/gallery', GalleryIndexController::class)->name('galleryIndex');
 
 Route::get('/credits', CreditsController::class)->name('credits');
@@ -91,5 +91,5 @@ Route::middleware([
     Route::get(
         '/uvod',
         [UvodController::class, 'vypis']
-    )->name('prehled');
+    )->name('uvod');
 });
