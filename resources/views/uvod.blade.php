@@ -17,9 +17,14 @@
         <x-navbar />
         <div class="flex flex-wrap">
             <div class="w-full md:w-1/2" > 
-                {{-- @livewire('hero', ['event' => $eventItem]) --}}
-                @livewire('hero')
-                {{-- @livewire('hero-render') --}}
+                <div x-data="{ showHero: true }" @toggle-hero.window="showHero = !showHero">
+                    <div x-show="showHero">
+                        @livewire('hero')
+                    </div>
+                    <div x-show="!showHero">
+                        @livewire('hero-render')
+                    </div>
+                </div>
             </div>
             <div class="w-full md:w-1/2">
                 <x-iconBar />
