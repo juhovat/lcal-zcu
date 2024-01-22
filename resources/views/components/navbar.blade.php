@@ -1,4 +1,6 @@
-<!-- components/navbar.blade.php -->
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+</head>
 <div class="bg-white shadow">
     <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
         <!-- Logo -->
@@ -14,16 +16,16 @@
 
             <!-- Search Icon -->
             <!-- Visible on all screen sizes -->
-            <button aria-label="Search" class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring">
+            <button aria-label="Search" class="text-blue-800 p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring">
                 {{-- <x-mdi-magnify />  (composer require postare/blade-mdi) = to use icon --}}
-                lupa
+                <i class="fas fa-search"></i>
             </button>
 
             <!-- Hamburger Menu Icon for Mobile -->
             <div class="md:hidden">
                 <button aria-label="Open Menu" class="text-blue-800 focus:outline-none focus:ring">
                     {{-- <x-radix-hamburger-menu /> --}}
-                    hamburger
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
             
@@ -34,18 +36,9 @@
             
             <div class="hidden md:flex items-center space-x-1">
                 {{-- uvod = akce --}}
-                <a href="/uvod" class="py-2 px-4 text-gray-700 hover:text-white hover:bg-blue-800">
-                    AKCE</a>
-                    {{-- rn / potom /dashboard --}}
-                    <a href="/" class="py-2 px-4 text-gray-700 hover:text-white hover:bg-blue-800">DOMŮ</a>
-                    </div>
-                    </div>
-                        <!-- Language Icons - These can be included inside the middle section if needed -->
-    {{-- <button aria-label="Czech Language" class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring">
-        <!-- Czech Flag Icon -->
-    </button>
-    <button aria-label="English Language" class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring">
-        <!-- UK Flag Icon -->
-    </button> --}}
-</nav>
+                <a href="/uvod" class="py-2 px-4 text-gray-700 hover:text-white hover:bg-blue-800 rounded " >
+                    Nová akce</a>
+            </div>
+        </div>
+        
 </div>

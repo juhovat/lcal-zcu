@@ -13,23 +13,17 @@
 </head>
 
 <x-app-layout>
-<body class="antialiased">
-    <x-navbar />
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="md:flex md:space-x-4">
-            <!-- Hero section - takes full width on mobile, half on md screens -->
-            <div class="md:w-1/2">
+    <body class="antialiased">
+        <x-navbar />
+        <div class="flex flex-wrap">
+            <div class="w-full md:w-1/2" style="height: 95vh;"> 
                 <x-hero />
-                {{-- <x-heroRender /> --}}
             </div>
-            <!-- Right column for icon bar and event list - takes full width on mobile, half on md screens -->
-            <div class="md:w-1/2">
+            <div class="w-full md:w-1/2">
                 <x-iconBar />
                 <x-eventList />
             </div>
         </div>
-    </div>
-</body>
-
+    </body>
 </html>
 </x-app-layout>
