@@ -16,14 +16,18 @@
     <body class="antialiased">
         <x-navbar />
         <div class="flex flex-wrap">
-            <div class="w-full md:w-1/2" style="height: 95vh;"> 
-                <x-hero />
+            <div class="w-full md:w-1/2" > 
+                {{-- @livewire('hero', ['event' => $eventItem]) --}}
+                @livewire('hero')
+                {{-- @livewire('hero-render') --}}
             </div>
             <div class="w-full md:w-1/2">
                 <x-iconBar />
-                <x-eventList />
+                @livewire('event-list')
             </div>
         </div>
+        @livewireScripts
+
     </body>
 </html>
 </x-app-layout>
