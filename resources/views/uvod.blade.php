@@ -13,23 +13,21 @@
 </head>
 
 <x-app-layout>
-<body class="antialiased">
-    <x-navbar />
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="md:flex md:space-x-4">
-            <!-- Hero section - takes full width on mobile, half on md screens -->
-            <div class="md:w-1/2">
-                <x-hero />
-                {{-- <x-heroRender /> --}}
+    <body class="antialiased">
+        <x-navbar />
+        <div class="flex flex-wrap">
+            <div class="w-full md:w-1/2" > 
+                {{-- @livewire('hero', ['event' => $eventItem]) --}}
+                @livewire('hero')
+                {{-- @livewire('hero-render') --}}
             </div>
-            <!-- Right column for icon bar and event list - takes full width on mobile, half on md screens -->
-            <div class="md:w-1/2">
+            <div class="w-full md:w-1/2">
                 <x-iconBar />
-                <x-eventList />
+                @livewire('event-list')
             </div>
         </div>
-    </div>
-</body>
+        @livewireScripts
 
+    </body>
 </html>
 </x-app-layout>
