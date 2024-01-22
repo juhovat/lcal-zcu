@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendingEventItemController;
+use App\Http\Controllers\CreditsController;
 use App\Http\Controllers\DeleteCommentController;
 use App\Http\Controllers\EventIndexController;
 use App\Http\Controllers\EventItemController;
@@ -38,6 +39,8 @@ Route::get('/', function () {
 Route::get('/e', EventIndexController::class)->name('eventIndex');
 Route::get('/e/{id}', EventItemShowController::class)->name('eventShow');
 Route::get('/gallery', GalleryIndexController::class)->name('galleryIndex');
+
+Route::get('/credits', CreditsController::class)->name('credits');
 
 Route::middleware([
     'auth:sanctum',

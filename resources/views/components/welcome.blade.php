@@ -58,7 +58,7 @@
         </p>
 
         <p class="mt-4 text-sm">
-            <a class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
+            <a href="{{ route('credits') }}" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
                 Děkujeme lidem a projektům, bez nichž by realizace byla mnohonásobně obtížnější.
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
