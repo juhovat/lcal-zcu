@@ -1,6 +1,6 @@
-<div class="relative bg-cover bg-center text-white" style="background-image: url('{{ asset('imgs/vetev.jpg') }}');">
+<div class="relative bg-cover bg-center text-white" style="background-image: url('{{ asset('imgs/vetev.jpg') }}'); hero">
     <div class="bg-black bg-opacity-40">
-        <div class="container mx-auto px-4 py-10">
+        <div class="container mx-auto px-4 py-10 md:h-screen">
             <!-- Top section with badges and license -->
             <div class="flex justify-between items-center flex-wrap">
                 <div class="flex items-center space-x-2 mb-4">
@@ -22,9 +22,9 @@
                         <p class="text-sm">za 3 dny (52 h)</p>
                     </div>
                     <div class="mb-4 sm:ml-4">
-                        <p class="text-2xl font-bold">3,2 km (od CENTRUM)</p>
+                        <p class="text-2xl font-bold ">3,2 km (od CENTRUM)</p>
                         {{-- make button actually switch to hero-render --}}
-                        <button class="text-sm bg-white rounded-full text-black p-2 px-3 mt-2">DETAILY</button>
+                        <button @click="$dispatch('toggle-hero')" class="text-sm bg-white rounded-full text-black p-2 px-3 mt-2">DETAILY</button>
                     </div>
                 </div>
             </div>

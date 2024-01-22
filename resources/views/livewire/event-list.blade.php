@@ -16,7 +16,7 @@
     <table class="border-collapse table-auto w-full whitespace-no-wrap table-striped relative ">
         <tbody class="text-center">
             @foreach ($events as $event)
-            <tr >
+            <tr  wire:click="selectEvent({{ $event->id }})">
                 <td class="p-2 border-b border-gray-200">Datum</td>
                 <td class="p-2 border-b border-gray-200">Čas</td>
                 <td class="p-2 border-b border-gray-200">Název</td>
@@ -29,7 +29,7 @@
                     </button>
                 </td>
                 <td class="p-2 border-b border-gray-200 bg-blue-800 text-white" >
-                    <button><i class="fas fa-comment-dots"></i></button>
+                    <button><i class="fas fa-ellipsis-h"></i></button>
                 </td>
                 
             </tr>
@@ -38,13 +38,20 @@
                 <td class="p-2 border-b border-gray-200 text-gray-400"> {{$event->start_time}} </td>
                 <td class="p-2 border-b border-gray-200 text-gray-400"> {{$event->address}} </td>
                 <td class="p-2 border-b border-gray-200 text-gray-400">
-                    <button class="uppercase bg-black text-white rounded-xl p-2">Sdílet</button>
+                    <button wire:click="selectEvent({{ $event->id }})" class="bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                        ZOBRAZIT
+                    </button>
                 </td>
                 <td class="p-2 border-b border-gray-200 text-gray-400">
-                    <button>
-                        {{-- <x-heroicon-o-heart /> --}}
-                        <i class="fas fa-heart"></i>
-                    </button>
+                    
+
+                    <form method="POST" action="{{ url('/events-like/' . $event->id) }}">
+                        @csrf
+                        <button type="submit">
+                            {{-- <x-heroicon-o-heart /> --}}
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </form>
                 </td>
                 <td class="p-2 border-b border-gray-200 bg-blue-800 text-white">
                     <button>

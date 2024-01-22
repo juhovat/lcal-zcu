@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\EventItem;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class EventList extends Component
@@ -29,6 +28,13 @@ class EventList extends Component
         $this->showOnlyMyEvents = false;
         $this->events = EventItem::all();
     }
+
+    public function selectEvent($eventId)
+    {
+        $event = EventItem::find($eventId);
+        $this->emit('eventSelected', $event->toArray()); // Emitting as an array
+    }
+    
 
     public function render()
     {
