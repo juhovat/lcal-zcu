@@ -133,7 +133,7 @@ class GalleryController extends Controller
     public function destroy(Gallery $gallery)
     {
         if($gallery->image) {
-            Storage::delete($gallery->image);
+            // Storage::delete($gallery->image);
         }
         $gallery->delete();
         return back();

@@ -5,7 +5,7 @@
                 {{ __('Oznámení') }}
             </h2>
             <div>
-                <a href="{{ route('galleries.create') }}" class="dark:text-white hover:text-slate-200">Nová</a>
+                <a href="{{ route('galleries.create') }}" class="dark:text-white hover:text-slate-200">Nové oznámení</a>
             </div>
         </div>
     </x-slot>
@@ -17,13 +17,13 @@
                     <thead class="text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Image
+                                Obrázek
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Caption
+                                Popis
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Action
+                                Akce
                             </th>
                         </tr>
                     </thead>
@@ -40,7 +40,7 @@
                                 <td class="px-6 py-4">
                                     <div class="flex space-x-2">
                                         <a href="{{ route('galleries.edit', $gallery) }}"
-                                            class="text-green-400 hover:text-green-600">Edit</a>
+                                            class="text-green-400 hover:text-green-600">Upravit</a>
                                         <form method="POST" class="text-red-400 hover:text-red-600"
                                             action="{{ route('galleries.destroy', $gallery) }}">
                                             @csrf
@@ -48,7 +48,7 @@
                                             <a href="{{ route('galleries.destroy', $gallery) }}"
                                                 onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                                                Delete
+                                                Odstranit
                                             </a>
                                         </form>
                                     </div>
@@ -57,7 +57,7 @@
                         @empty
                             <tr>
                                 <td colspan="4" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
-                                    No Gallery found
+                                    Zdá se, že ještě nic nebylo oznámeno.
                                 </td>
                             </tr>
                         @endforelse

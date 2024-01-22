@@ -82,7 +82,7 @@ class EventItemController extends Controller
 {
     $data = $request->validated();
     if ($request->hasFile('image')) {
-        Storage::delete('public/' . $event->image);
+        // Storage::delete('public/' . $event->image);
         $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
         //zajistuje pristup (presun z public/public) pro Storage:url()
         $path = $request->file('image')->storeAs('public/events', $imageName);
@@ -101,7 +101,7 @@ class EventItemController extends Controller
      */
     public function destroy(EventItem $event): RedirectResponse
     {
-        Storage::delete($event->image);
+        // Storage::delete($event->image);
         $event->tags()->detach();
         $event->delete();
         return to_route('events.index');

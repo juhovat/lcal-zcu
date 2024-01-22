@@ -36,7 +36,7 @@
             
             <div class="hidden md:flex items-center space-x-1">
                 {{-- uvod = akce --}}
-                <a href="/uvod" class="py-2 px-4  hover:text-white hover:bg-blue-800 rounded " >
+                <a href="{{ route('events.create') }}" class="py-2 px-4  hover:text-white hover:bg-blue-800 rounded " >
                     Nová akce</a>
             </div>
         </div>
