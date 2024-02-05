@@ -35,9 +35,9 @@
             <tr>
                 <td class="p-2 border-b border-gray-200 text-gray-400"> {{$event->start_date}} </td>
                 <td class="p-2 border-b border-gray-200 text-gray-400"> {{$event->start_time}} </td>
-                <td class="p-2 border-b border-gray-200 text-gray-400"> {{$event->address}} </td>
+                <td class="p-2 border-b border-gray-200 text-gray-400"> {{$event->title}} </td>
                 <td class="p-2 border-b border-gray-200 text-gray-400">
-                    <button wire:click="selectEvent({{ $event->id }})" class="bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                    <button wire:click="$emit('selectEvent', {{ $event->id }})" class="bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded">
                         ZOBRAZIT
                     </button>
                 </td>
@@ -54,7 +54,7 @@
                     </form>
                 </td>
                 <td class="p-2 border-b border-gray-200 bg-blue-800 text-white">
-                    <button class="btn_get_event_sum" wire:click="{{ route('events.showEventDetails') }}">
+                    <button class="btn_get_event_sum">
                         {{-- composer require codeat3/blade-eos-icons --}}
                         {{-- <x-eos-content-copy /> --}}
                         <i class="fas fa-copy"></i>

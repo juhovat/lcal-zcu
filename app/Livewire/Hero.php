@@ -12,9 +12,9 @@ class Hero extends Component
     protected $listeners = ['eventSelected' => 'onEventSelected'];
 
     public function onEventSelected($eventData)
-    {
-        $this->event = new EventItem($eventData);
-    }
+{
+    $this->event = $eventData;
+}
     
     public function mount()
     {

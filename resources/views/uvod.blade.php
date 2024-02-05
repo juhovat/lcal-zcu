@@ -16,7 +16,7 @@
     <body class="antialiased">
         <x-navbar />
         <div class="flex flex-wrap">
-            <div class="w-full md:w-1/2" > 
+            <div class="w-full md:w-1/2 sticky top-0 z-10" > 
                 <div x-data="{ showHero: true }" @toggle-hero.window="showHero = !showHero">
                     <div x-show="showHero">
                         @livewire('hero')
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full md:w-1/2">
+            <div class="w-full md:w-1/2 overflow-y-auto">
                 <x-iconBar />
                 @livewire('event-list')
             </div>

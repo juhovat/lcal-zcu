@@ -31,8 +31,7 @@ class EventList extends Component
 
     public function selectEvent($eventId)
     {
-        $event = EventItem::find($eventId);
-        $this->emit('eventSelected', $event->toArray()); // Emitting as an array
+        $this->emitToHero($eventId);
     }
     
 
